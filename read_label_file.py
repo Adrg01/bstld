@@ -26,7 +26,7 @@ def get_all_labels(input_yaml, riib=False, clip=True):
     """
     assert os.path.isfile(input_yaml), "Input yaml {} does not exist".format(input_yaml)
     with open(input_yaml, 'rb') as iy_handle:
-        images = yaml.load(iy_handle)
+        images = yaml.load(iy_handle, Loader=yaml.SafeLoader)
 
     if not images or not isinstance(images[0], dict) or 'path' not in images[0]:
         raise ValueError('Something seems wrong with this label-file: {}'.format(input_yaml))
