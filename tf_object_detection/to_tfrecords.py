@@ -74,7 +74,7 @@ def create_object_detection_tfrecords(labels, tfrecords_path, dataset_folder, se
     """
 
     shuffle(labels)
-    writer = tf.python_io.TFRecordWriter(tfrecords_path)
+    writer = tf.io.TFRecordWriter(tfrecords_path)
     for label in tqdm.tqdm(labels, desc='Creating {}-set'.format(set_name)):
         image_path = os.path.join(dataset_folder, label['path'])
         image = cv2.imread(image_path)
